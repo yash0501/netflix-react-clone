@@ -1,3 +1,19 @@
-img {
+.row_posters {
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  padding: 20px; /* is used so that on transform, the box does not remain same size and just zoom in but expand covering external area. */
+}
+.row_posters::-webkit-scrollbar {
+  display: none;
+}
+.row_poster {
   width: 200px;
+  object-fit: contain; /* to maintain the aspect ration of image */
+  max-height: 100px;
+  transition: transform 450ms;
+  margin: 0 5px;
+}
+.row_poster:hover {
+  transform: scale(1.08);
 }

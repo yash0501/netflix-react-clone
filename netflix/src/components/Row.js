@@ -28,6 +28,7 @@ function Row(props) {
             <img
               className="row_poster"
               src={`${baseUrl}${movie.poster_path}`}
+              key={movie.id}
               alt={movie.name}
             />
           );
