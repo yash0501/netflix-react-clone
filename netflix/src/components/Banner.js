@@ -4,7 +4,7 @@ import requests from "../requests";
 import "./Banner.css";
 
 function Banner() {
-  /*const [movie, setMovie] = useState([]);
+  const [movie, setMovie] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -26,30 +26,28 @@ function Banner() {
   function truncate(str, n) {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
   }
-*/
+
   return (
     <header
       className="banner"
       style={{
         backgroundSize: "cover",
-        backgroundImage: `url("https://image.tmdb.org/t/p/original/70AV2Xx5FQYj20labp0EGdbjI6E.jpg")`, //url("https://image.tmdb.org/t/p/original/nBrkOZyI75artyizuBFeya48KbO.jpg")
+        backgroundImage: `url("https://image.tmdb.org/t/p/original${movie?.backdrop_path}`, //url("https://image.tmdb.org/t/p/original/nBrkOZyI75artyizuBFeya48KbO.jpg")
         //url("https://image.tmdb.org/t/p/original${movie?.backdrop_path}
         backgroundPosition: "center center",
       }}
     >
       {/* background image will be dynamic and will change after every refresh to any random image */}
       <div className="banner_contents">
-        <h1 className="banner_title">Who Killed Sara?</h1>
+        <h1 className="banner_title">
+          {movie?.title || movie?.name || movie?.original_name}
+        </h1>
         {/** {movie?.title || movie?.name || movie?.original_name} */}
         <div className="banner_buttons">
           <button className="banner_button">Play</button>
           <button className="banner_button">My List</button>
         </div>
-        <p className="banner_description">
-          Hell-bent on exacting revenge and proving he was framed for his
-          sister's murder, Álex sets out to unearth much more than the crime's
-          real culprit.
-        </p>
+        <p className="banner_description">{truncate(movie?.overview, 150)}</p>
         {/** {truncate(movie?.overview, 150)} */}
       </div>
       <div className="banner--fadeBottom"></div>
